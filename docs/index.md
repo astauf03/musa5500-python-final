@@ -1,17 +1,12 @@
-# Welcome to MkDocs
+# Passyunk Square Neighborhood Accessibility Character Map
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+Welcome! This website documents the full workflow, analysis, and results behind my MUSA 5500 final project: constructing a multi-dimensional neighborhood accessibility index using mobility, land use, environmental, and social variables.
 
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+Use the navigation bar to explore:
+- Project Overview  
+- Data Sources  
+- Methodology  
+- Score Construction (Mobility, Environmental, Land Use, Social, Accessibility)  
+- Results & Interpretation  
+- Limitations  
+- Conclusion  
