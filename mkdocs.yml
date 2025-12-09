@@ -2,7 +2,7 @@ site_name: Passyunk Square Neighborhood Accessibility Character Map
 theme:
   name: material
   palette:
-    primary: teal
+    primary: deep purple
     accent: deep orange
   features:
     - navigation.tabs
@@ -33,3 +33,9 @@ markdown_extensions:
   - attr_list
   - pymdownx.highlight
   - pymdownx.superfences
+extra_css:
+  - assets/extra.css
+extra_javascript:
+  - assets/custom.js
+plugins:
+  - search

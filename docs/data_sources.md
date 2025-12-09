@@ -1,10 +1,10 @@
-# 📊 Data Sources
+# Data Sources
 
 This project integrates OpenStreetMap (OSM) features, Census/ACS indicators, NDVI-based greenness, and administrative boundaries to construct the mobility, land use, environmental, and social indices.
 
 ---
 
-## 🛣️ 1. OSMnx Features
+## 1. OSMnx Features
 
 Used for mobility and proximity scoring:
 
@@ -21,7 +21,7 @@ services = {'amenity':['post_office','library','police','social_facility','fire_
 
 ---
 
-## 🧮 2. Census / ACS Indicators
+## 2. Census / ACS Indicators
 
 Census variables were aggregated to neighborhood boundaries and feed into the **Social Score**.
 
@@ -33,7 +33,7 @@ Census variables were aggregated to neighborhood boundaries and feed into the **
 
 ---
 
-## 🌿 3. NDVI (NAIP Imagery)
+## 3. NDVI (NAIP Imagery)
 
 - Derived from NAIP 2019 & 2022  
 - Used to compute greenness and canopy indicators  
@@ -41,7 +41,7 @@ Census variables were aggregated to neighborhood boundaries and feed into the **
 
 ---
 
-## 🗺️ 4. Philadelphia Neighborhood Boundaries / City Limits
+## 4. Philadelphia Neighborhood Boundaries / City Limits
 
 Source:  
 https://opendataphilly.org/datasets/philadelphia-neighborhoods/  

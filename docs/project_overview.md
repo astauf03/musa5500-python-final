@@ -1,34 +1,34 @@
 # Project Overview
 
-## 🎯 Motivation
+## Motivation
 
-Philadelphia’s neighborhoods vary widely in walkability, access to health/social services, environmental quality, and mobility infrastructure.  
-This project creates a **composite accessibility index** to evaluate these conditions spatially at the neighborhood scale.
+Philadelphia’s neighborhoods vary widely in walkability, access to health and social services, environmental conditions, and mobility infrastructure.  
+This project constructs a composite **Neighborhood Accessibility Index** to evaluate these dimensions at the neighborhood scale.
 
-Passyunk Square was chosen as a case study because:
+Passyunk Square serves as the primary case study because:
 
-- It is a vibrant, mixed-use corridor with local amenities.  
-- It has strong mobility infrastructure (bike lanes, sidewalks).  
-- It provides a good contrast to lower-access neighborhoods.  
-
----
-
-## 🧩 Research Questions
-
-1. How accessible is Passyunk Square relative to other Philadelphia neighborhoods?  
-2. Which components — mobility, land use, environmental, social — drive its score?  
-3. How do different forms of access (services, parks, mobility) spatially reinforce or contradict each other?  
-4. What limitations emerge from using open data (OSMnx, ACS, etc.)?
+- It is a mixed-use neighborhood with a strong concentration of local amenities.  
+- It has well-developed pedestrian and bicycle infrastructure.  
+- It provides a clear contrast to neighborhoods experiencing lower levels of accessibility.  
 
 ---
 
-## 🛠️ Project Workflow
+## Research Questions
+
+1. How accessible is Passyunk Square relative to other neighborhoods in Philadelphia?  
+2. Which components—mobility, land use, environmental, and social—most strongly influence its overall score?  
+3. How do different dimensions of accessibility (services, parks, mobility, environmental quality) align or diverge spatially?  
+4. What limitations arise from relying on open datasets such as OSMnx, ACS, and NAIP imagery?
+
+---
+
+## Project Workflow
 
 ```mermaid
 flowchart TD
-    A[Collect Data] --> B[Preprocess + Clean]
+    A[Collect Data] --> B[Preprocess and Clean]
     B --> C[Normalize Variables (0–1)]
     C --> D[Compute Component Scores]
-    D --> E[Weighted Accessibility Index]
-    E --> F[Visualization (Maps + Charts)]
-    F --> G[Interpretation]
+    D --> E[Construct Composite Accessibility Index]
+    E --> F[Visualization: Maps and Charts]
+    F --> G[Interpretation and Evaluation]
