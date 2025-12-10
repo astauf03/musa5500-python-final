@@ -169,6 +169,15 @@ These maps show the spatial distribution of the three components used to build t
 Passyunk Square is highlighted for reference.
 ![Social Score Components](../assets/social_components.png)
 
+**TEXT PLACEHOLDER FOR INTERPRETATION**
 
+---
+## 2. Social Score Distribution
 
+WE NEED TO FIX THE ACTUAL NUMBER IN THE CODE 
 
+---
+
+## 3. Distribution of Social Score Variables 
+
+interpretation
