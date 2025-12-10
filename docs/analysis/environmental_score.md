@@ -1,0 +1,93 @@
+# Environmental Score 
+
+The Environmental Score represents the quality of a neighborhood's physical and ecological environment based on three tract-level indicators:
+
+1. Vegetation health (NDVI) 
+2. Proximity to public parks - distance from each census tract centroid to the nearest park or green space 
+3. Urban tree canopy coverage - estimated tree density based on citywide canopy data
+
+Each indicator is computed at the census tract level, normalized to a 0-1 scale, and then averaged to produce the final Environmental Score for each neighborhood. Higher scores indicate better environmental quality.
+
+---
+
+## Data Sources
+
+### Remote Sensing Data & Environmental Inputs
+- Landsat 8 Surface Reflectance (SR) imagery from Google Earth Engine (GEE) for NDVI calculation
+- Philadelphia Parks & Recreation open data for park locations (2015)
+- OpenStreetMap (OSM) data for green space features 
+    - Tagged as `leisure=park`, `leisure=garden`, `leisure = playground`, etc. 
+
+More information on data sources can be found in the [Data Sources](data_sources.md) documentation.
+
+### Boundaries 
+- Philadelphia Neighborhood Boundaries from OpenDataPhilly (GeoJSON)
+- Philadelphia City Limits from OpenDataPhilly (GeoJSON)
+- Census Tract Boundaries for spatial joins and zonal statistics
+
+---
+
+## Methodology
+1. **NDVI Calculation**: 
+   - Landsat 8 SR imagery for summer months (June-August) is filtered for low cloud cover (<10%) using GEE.
+   - NDVI is computed using the formula: **(NIR - Red) / (NIR + Red)**.
+   PLACEHOLDER FOR FORMULA
+   - Census tract-level mean, median, and standard deviation of NDVI values are calculated using zonal statistics.
+
+Values were normalized to a 0-1 scale using Min-Max scaling.
+
+NDVI_score=NDVImax​−NDVImin​NDVImean​−NDVImin​
+
+---
+
+2. **Proximity to Parks**:
+   - The Euclidean distance from each census tract centroid to the nearest park or green space is calculated using OSM and city park data.
+   - Distances are inverted and normalized so that shorter distances yield higher scores (higher = closer to parks).
+  Proximity=1−dmax
+	​−dmin
+	​d−dmin
+	​
+This measure approximates access to recreational green spaces.
+
+---
+
+3. **Urban Tree Canopy Coverage**:
+   - Tree canopy data from the Philadelphia Urban Tree Canopy Assessment is used to estimate the percentage of tree cover within each census tract.
+   - Canopy percentages are normalized to a 0-1 scale (higher = more tree cover).
+   Tree Density = tree county / area (sq_mi)
+
+   Then normalized to 0-1:
+   Tree_score = density - min(density) / (max(density) - min(density))
+	​
+---
+
+4. **Composite Environmental Score**:
+   - The three normalized indicators (NDVI, Proximity to Parks, Tree Canopy Coverage) are averaged to compute the final Environmental Score for each census tract.
+   - Environmental Score = (NDVI_score + Proximity_score + Tree_score) / 3
+
+   Scores were then aggregated to neighborhood boundaries by averaging the tract-level scores within each neighborhood polygon.
+
+   Passyunk Square and other neighborhoods' Environmental Scores were compared to assess spatial variations in environmental quality across Philadelphia.
+
+   ---
+
+## Visualization
+
+### Tract-Level Environmental Components
+A combined 3-panel map visualizes NDVI, proximity to parks, and tree canopy coverage at the census tract level with a shared colored scale.
+insert image here
+
+### Neighborhood-Level Environmental Score
+A citywide map showing aggregated environmental scores at the neighborhood level.
+insert image here
+
+---
+
+## Interpretation
+
+### Passyunk Square Findings
+blah blah blah.
+
+### Citywide Patterns
+blah blah blah.
+
