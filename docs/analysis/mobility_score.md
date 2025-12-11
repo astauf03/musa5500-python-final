@@ -81,4 +81,7 @@ Maps and histograms were created to visualize the spatial distribution of the Mo
 
 A three panel map visualizaes the spatial distribution of each mobility component:
 
-![Mobility Component Maps](mobility_component_maps.png)
+![Mobility Component Maps](mobility_component_maps.png) (doesn't exist yet)
+
+---
+
