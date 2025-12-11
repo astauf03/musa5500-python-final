@@ -114,4 +114,4 @@ Higher scores indicate better spatial access to essential services.
 
 ## Key Findings
 
-Passyunk is generally young and able-bodied. This follows the patterns of the rest of the city. However, Passyunk has an above average rate of people who walk to work, making their social score incredibly robust. 
+East Passyunk has a breadth of social and health services immediately accessible to most residents. It is ever so slightly above average than the rest of the city, especially compared to North Philly that has several pink and purple pockets in the health proximity score. The land use score is Easy Passyunk's strongest accessibility variable. 
