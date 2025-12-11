@@ -15,7 +15,7 @@ Explore Philadelphia's neighborhood accessibility patterns using the interactive
 
 Each neighborhood polygon displays detailed tooltips showing scores across all dimensions.
 
-<iframe src="notebooks/interactive_accessibility_map.html" width="100%" height="700px" frameborder="0"></iframe>
+<iframe src="docs/interactive/interactive_accessibility_map.html" width="100%" height="700px" frameborder="0"></iframe>
 
 *Interactive map: Click layers in the control panel (top right) to switch between different accessibility dimensions. Hover over neighborhoods for detailed scores.*
 
