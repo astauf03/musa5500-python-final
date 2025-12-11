@@ -85,3 +85,6 @@ A three panel map visualizaes the spatial distribution of each mobility componen
 
 ---
 
+### Histogram of Mobility Score Distribution
+
+

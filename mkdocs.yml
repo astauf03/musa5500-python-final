@@ -23,8 +23,6 @@ nav:
       - Accessibility Score: analysis/accessibility_score.md
   - Results:
       - Score Interpretation: results.md
-      - Boxplots vs City Overview: boxplots_interpretation.md
-      - Interactive Maps: interactive_maps.md
   - Conclusion: conclusion.md
   - Limitations: limitations.md
 markdown_extensions:

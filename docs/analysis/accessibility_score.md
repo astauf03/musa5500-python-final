@@ -89,6 +89,11 @@ $$
 
 </div>
 
+Rationale for weights:
+- **Mobility (40%)**: Directly impacts daily navigation and access to infrastructure.
+- **Land Use (30%)**: Reflects proximity to essential services and amenities.
+- **Environmental (20%)**: Supports overall wellbeing and quality of life.
+- **Social (10%)**: Captures demographic vulnerabilities affecting accessibility.
 
 ---
 
@@ -124,6 +129,10 @@ Neighborhood accessibility percentiles were calculated from the final composite 
 - Composite percentile: **≈ top quartile citywide**
 
 ![Passyunk Square Accessibility](../assets/ep_neighborhood_scores.png)
+
+### Radar Chart: Passyunk Square vs. City Average
+![Radar Chart: Passyunk Square vs. City Average](../assets/psq_radar.png)
+
 
 ---
 
