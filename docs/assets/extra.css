@@ -1,0 +1,130 @@
+/*************************************************************
+ GLOBAL THEME OVERRIDES
+ These adjust headings, links, accents, and interactive elements
+ to match your site branding.
+**************************************************************/
+
+/* Main brand color */
+:root {
+  --md-primary-fg-color: #7B17B3;   /* purple */
+  --md-accent-fg-color:  #B34A15;   /* secondary orange */
+}
+
+/* Hover & active states */
+a,
+.md-nav__link {
+  --md-primary-fg-color--light: #9d3fd1;
+  --md-primary-fg-color--dark:  #5c0f85;
+}
+
+/*************************************************************
+ CUSTOM COLOR UTILITIES
+ These classes let you color ANY TEXT inside Markdown:
+ <span class="gold">text</span>
+**************************************************************/
+
+/* Gold highlight (#FCC974) */
+.gold,
+.score-gold {
+  color: #FCC974 !important;
+  font-weight: 600;
+}
+
+/* Red/orange highlight (#E37440) */
+.red,
+.score-red {
+  color: #E37440 !important;
+  font-weight: 600;
+}
+
+/* Blue highlight (#40C5E3) */
+.blue,
+.score-blue {
+  color: #40C5E3 !important;
+  font-weight: 600;
+}
+
+/*************************************************************
+ MATH / EQUATION COLOR HELPERS
+ Useful inside LaTeX-like formulas in Markdown
+**************************************************************/
+
+.eq-gold {
+  color: #FCC974 !important;
+}
+
+.eq-red {
+  color: #E37440 !important;
+}
+
+.eq-blue {
+  color: #40C5E3 !important;
+}
+
+/*************************************************************
+ OPTIONAL: STYLE YOUR SCORE BADGES
+ This makes little pill-shaped score labels:
+ <span class="badge-gold">High</span>
+**************************************************************/
+
+.badge {
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* Gold badge */
+.badge-gold {
+  background-color: #FCC97433;
+  color: #FCC974;
+  border: 1px solid #FCC974;
+}
+
+/* Red badge */
+.badge-red {
+  background-color: #E3744033;
+  color: #E37440;
+  border: 1px solid #E37440;
+}
+
+/* Blue badge */
+.badge-blue {
+  background-color: #40C5E333;
+  color: #40C5E3;
+  border: 1px solid #40C5E3;
+}
+
+
+/*************************************************************
+ MATHJAX COLOR FIX
+ Ensures .eq-blue, .eq-red, .eq-gold work INSIDE MathJax output
+**************************************************************/
+
+/* Allow wrapper div to control MathJax internal text */
+.eq-blue mjx-container,
+.eq-blue mjx-container * {
+  color: #40C5E3 !important;
+  fill: #40C5E3 !important;
+}
+
+.eq-red mjx-container,
+.eq-red mjx-container * {
+  color: #E37440 !important;
+  fill: #E37440 !important;
+}
+
+.eq-gold mjx-container,
+.eq-gold mjx-container * {
+  color: #FCC974 !important;
+  fill: #FCC974 !important;
+}
+
+/* Optional: center equations in wrappers */
+.eq-blue,
+.eq-red,
+.eq-gold {
+  text-align: center;
+  margin: 1rem 0;
+}

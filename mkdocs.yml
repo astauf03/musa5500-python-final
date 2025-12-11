@@ -1,0 +1,45 @@
+site_name: Passyunk Square Neighborhood Accessibility Character Map
+theme:
+  name: material
+  palette:
+    primary: deep purple
+    accent: deep orange
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - content.code.copy
+    - navigation.top
+nav:
+  - Home: index.md
+  - Project Overview: project_overview.md
+  - Data Sources: data_sources.md
+  - Methodology: methodology.md
+  - Analysis:
+      - Mobility Score: analysis/mobility_score.md
+      - Environmental Score: analysis/environmental_score.md
+      - Land Use Score: analysis/land_use_score.md
+      - Social Score: analysis/social_score.md
+      - Accessibility Score: analysis/accessibility_score.md
+  - Results:
+      - Score Interpretation: results.md
+  - Conclusion: conclusion.md
+  - Limitations: limitations.md
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+extra_css:
+  - assets/extra.css
+extra_javascript:
+  - javascripts/mathjax.js
+  - assets/custom.js
+plugins:
+  - search
