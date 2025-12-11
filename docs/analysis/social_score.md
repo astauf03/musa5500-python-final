@@ -7,7 +7,7 @@ The score is calculated at the **census tract level** and then aggregated to **n
 
 ---
 
-## Overview
+# Overview
 
 The Social Score reflects three core demographic components:
 
@@ -174,10 +174,25 @@ Passyunk Square is highlighted for reference.
 ---
 ## 2. Social Score Distribution
 
-WE NEED TO FIX THE ACTUAL NUMBER IN THE CODE 
+These histograms display the distribution of Social Scores across all Philadelphia neighborhoods, with Passyunk Square highlighted.
+
+![Social Score Distribution](../assets/psq_city_histograms.png)
+
+================================================================================
+KEY FINDINGS
+================================================================================
+• Passyunk Square ranks 158 out of 158 neighborhoods
+• Social Score: 0.534 (City Avg: 0.391)
+• Percentile: 100.0th
+================================================================================
+---
+
+## 3. Compare to City Average
+
+Passyunk Square's Social Score of 0.534 is significantly higher than the city average of 0.391, placing it in the 100th percentile among Philadelphia neighborhoods. This indicates that Passyunk Square has a demographic profile associated with lower mobility vulnerability compared to other areas in the city.
+
+
+!![PSQ vs City Average Social Score](../assets/psq_social_rank.png)
 
 ---
 
-## 3. Distribution of Social Score Variables 
-
-interpretation

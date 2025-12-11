@@ -1,86 +1,110 @@
-# Environmental Score 
+# Environmental Score
 
-The Environmental Score represents the quality of a neighborhood's physical and ecological environment based on three tract-level indicators:
+The Environmental Score evaluates ecological and physical environmental quality in Philadelphia neighborhoods.  
+It uses three equally weighted indicators calculated at the census-tract level and then aggregated to neighborhoods:
 
-1. Vegetation health (NDVI) 
-2. Proximity to public parks - distance from each census tract centroid to the nearest park or green space 
-3. Urban tree canopy coverage - estimated tree density based on citywide canopy data
+1. Vegetation Health (NDVI)  
+2. Proximity to Parks & Green Space  
+3. Urban Tree Canopy Coverage  
 
-Each indicator is computed at the census tract level, normalized to a 0-1 scale, and then averaged to produce the final Environmental Score for each neighborhood. Higher scores indicate better environmental quality.
-
----
-
-## Data Sources
-
-### Remote Sensing Data & Environmental Inputs
-- Landsat 8 Surface Reflectance (SR) imagery from Google Earth Engine (GEE) for NDVI calculation
-- Philadelphia Parks & Recreation open data for park locations (2015)
-- OpenStreetMap (OSM) data for green space features 
-    - Tagged as `leisure=park`, `leisure=garden`, `leisure = playground`, etc. 
-
-More information on data sources can be found in the [Data Sources](data_sources.md) documentation.
-
-### Boundaries 
-- Philadelphia Neighborhood Boundaries from OpenDataPhilly (GeoJSON)
-- Philadelphia City Limits from OpenDataPhilly (GeoJSON)
-- Census Tract Boundaries for spatial joins and zonal statistics
+All indicators are normalized to a 0–1 scale, where higher values represent more favorable environmental conditions.
 
 ---
 
-## Methodology
-1. **NDVI Calculation**: 
-   - Landsat 8 SR imagery for summer months (June-August) is filtered for low cloud cover (<10%) using GEE.
-   - NDVI is computed using the formula: **(NIR - Red) / (NIR + Red)**.
-   PLACEHOLDER FOR FORMULA
-   - Census tract-level mean, median, and standard deviation of NDVI values are calculated using zonal statistics.
+## Indicators
 
-Values were normalized to a 0-1 scale using Min-Max scaling.
+### **1. Vegetation Health (NDVI)**  
+Calculated from Landsat 8 Surface Reflectance imagery:
 
-NDVI_score=NDVImax​−NDVImin​NDVImean​−NDVImin​
+<div class="eq-blue">
+
+\[
+\text{NDVI} = \frac{(\text{NIR} - \text{Red})}{(\text{NIR} + \text{Red})}
+\]
+
+</div>
+
+Min–Max normalization:
+
+<div class="eq-blue">
+
+\[
+\text{NDVIScore} =
+\frac{\text{NDVI}_{\text{tract}} - \text{NDVI}_{\min}}
+     {\text{NDVI}_{\max} - \text{NDVI}_{\min}}
+\]
+
+</div>
 
 ---
 
-2. **Proximity to Parks**:
-   - The Euclidean distance from each census tract centroid to the nearest park or green space is calculated using OSM and city park data.
-   - Distances are inverted and normalized so that shorter distances yield higher scores (higher = closer to parks).
-  Proximity=1−dmax
-	​−dmin
-	​d−dmin
-	​
-This measure approximates access to recreational green spaces.
+### **2. Proximity to Parks**
+Distances from tract centroids to nearest park are computed using a KD-Tree.
+
+<div class="eq-blue">
+
+\[
+\text{ProximityScore} =
+1 -
+\frac{d_{\text{tract}} - d_{\min}}
+     {d_{\max} - d_{\min}}
+\]
+
+</div>
 
 ---
 
-3. **Urban Tree Canopy Coverage**:
-   - Tree canopy data from the Philadelphia Urban Tree Canopy Assessment is used to estimate the percentage of tree cover within each census tract.
-   - Canopy percentages are normalized to a 0-1 scale (higher = more tree cover).
-   Tree Density = tree county / area (sq_mi)
+### **3. Urban Tree Canopy**
 
-   Then normalized to 0-1:
-   Tree_score = density - min(density) / (max(density) - min(density))
-	​
+<div class="eq-red">
+
+\[
+\text{TreeDensity} =
+\frac{\text{TreeArea}}{\text{TractArea}}
+\]
+
+
+
+\[
+\text{TreeScore} =
+\frac{\text{TreeDensity}_{\text{tract}} - \text{Density}_{\min}}
+     {\text{Density}_{\max} - \text{Density}_{\min}}
+\]
+
+</div>
+
 ---
 
-4. **Composite Environmental Score**:
-   - The three normalized indicators (NDVI, Proximity to Parks, Tree Canopy Coverage) are averaged to compute the final Environmental Score for each census tract.
-   - Environmental Score = (NDVI_score + Proximity_score + Tree_score) / 3
+## Composite Environmental Score
 
-   Scores were then aggregated to neighborhood boundaries by averaging the tract-level scores within each neighborhood polygon.
+An equal-weighted average:
 
-   Passyunk Square and other neighborhoods' Environmental Scores were compared to assess spatial variations in environmental quality across Philadelphia.
+<div class="eq-blue">
 
-   ---
+\[
+\text{EnvironmentalScore} =
+\frac{
+\text{NDVIScore} +
+\text{ProximityScore} +
+\text{TreeScore}
+}{3}
+\]
 
-## Visualization
+</div>
 
-### Neighborhood-Level Environmental Score
-![Alt text](data/envmaps.png)
+Neighborhood scores are computed by averaging tract scores within each boundary.
 
+---
+
+## Visualizations
+
+### **Tract-Level Environmental Components**
+*(insert: `environmental_components.png`)*
+
+### **Neighborhood-Level Environmental Score Map**
+*(insert: `environmental_score_map.png`)*
+
+---
 
 ## Interpretation
-
-### Passyunk Square Findings
-This is Passyunk's weakest score within the accessibility index. Park proximty is strong, but it lacks meaningful vegetation that could potientially contribute to a cooler, shadier environment. 
-
-### Citywide Patterns
-South Philly at large is quite barren of trees and green vegetation, so it's not too out of the ordinary for Passyunk. However, compared to North and West Philly, it falls on the lower range of scores. There is an interesting dichotomy happening because in most metropolitcan landscapes, the most trees and green space can be found in the most upwardly mobile or economically thriving spaces. Yet North and West Philly both underperform economically and socially compared to its neighbors to the south. Passyunk has a median income of 94K, over 30k more than the city average. 
+*(Insert narrative about Passyunk Square + citywide observations)*  

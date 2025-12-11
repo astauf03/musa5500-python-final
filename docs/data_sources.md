@@ -33,9 +33,9 @@ Census variables were aggregated to neighborhood boundaries and feed into the **
 
 ---
 
-## 3. NDVI (NAIP Imagery)
+## 3. NDVI (Landsat 8 SR)
 
-- Derived from NAIP 2019 & 2022  
+- Derived from Landsat 8 Surface Reflectance data accessed via Google Earth Engine (GEE) 
 - Used to compute greenness and canopy indicators  
 - Supports the **Environmental Score**
 

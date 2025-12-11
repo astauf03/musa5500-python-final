@@ -1,7 +1,7 @@
 # Mobility Score Documentation
 
 ## Overview 
-The Mobility Score evaluates neighborhood access to transportation infrastructure and options, built from three tract-level indicators:
+The Mobility Score evaluates neighborhood access to transportation infrastructure and options, built from three neighboehood-level indicators:
 
 1. **Bike Lane Density** (higher = more bike-accessible streets)
 2. **Sidewalk Coverage** (higher = more pedestrian-friendly streets)
