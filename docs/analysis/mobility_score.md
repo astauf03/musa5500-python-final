@@ -1,0 +1,50 @@
+# Mobility Score Documentation
+
+## Overview 
+The Mobility Score evaluates neighborhood access to transportation infrastructure and options, built from three tract-level indicators:
+
+1. **Bike Lane Density** (higher = more bike-accessible streets)
+2. **Sidewalk Coverage** (higher = more pedestrian-friendly streets)
+3. **Curb-cartway Density (Inverted)** (lower = fewer curb cuts, better pedestrian safety)
+
+Each indicator is computed as a density measure (length of infrastructure per unit area), normalized to a 0–1 scale, and averaged to produce a final mobility score per neighborhood. 
+
+---
+
+## Data Sources
+
+- ### OpenDataPhilly 
+Curbs and Cartways datasets
+Bike Network dataset
+
+- ### Census Tracts 2021 
+Census tract shapefiles for spatial joins
+
+- ### OSMnx Street Network
+Load street network data for Philadelphia using OSMnx library
+Also, accessed the "footway" network type for sidewalk extraction
+
+```python
+philly = ox.geocode_to_gdf("Philadelphia, PA")
+```
+and Amenity data for proximity analysis
+```python
+amenities = ox.features_from_place("Philadelphia, PA", tags={"amenity": True})
+```
+
+---
+## Methodology
+
+1. **Bike Lane Density Index**
+
+   From OpenData Philly's Bike Network dataset, we calculated the total length of bike lanes within tracts boundary using spatial joins. Then we aggregated to neighborhood level and computed bike lane density as:
+   
+   FORMULA: Bike Lane Density = (total bikelane length) / (neighborhood area)
+
+   Normalized to 0–1 scale.
+
+2. **Sidewalk Continuity Index**
+
+    Sidewalk networks were extracted from OSMnx street network data and combined with OpenDataPhilly sidewalk data. We calculated total sidewalk length per tract, aggregated to neighborhood level, and computed sidewalk density as:
+
+    Sidewalk Density = 1 - (# of sidewalk gaps) / (total sidewalks)
