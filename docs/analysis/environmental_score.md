@@ -73,21 +73,14 @@ This measure approximates access to recreational green spaces.
 
 ## Visualization
 
-### Tract-Level Environmental Components
-A combined 3-panel map visualizes NDVI, proximity to parks, and tree canopy coverage at the census tract level with a shared colored scale.
-insert image here
-
 ### Neighborhood-Level Environmental Score
-A citywide map showing aggregated environmental scores at the neighborhood level.
-insert image here
+![Alt text](data/envmaps.png)
 
----
 
 ## Interpretation
 
 ### Passyunk Square Findings
-blah blah blah.
+This is Passyunk's weakest score within the accessibility index. Park proximty is strong, but it lacks meaningful vegetation that could potientially contribute to a cooler, shadier environment. 
 
 ### Citywide Patterns
-blah blah blah.
-
+South Philly at large is quite barren of trees and green vegetation, so it's not too out of the ordinary for Passyunk. However, compared to North and West Philly, it falls on the lower range of scores. There is an interesting dichotomy happening because in most metropolitcan landscapes, the most trees and green space can be found in the most upwardly mobile or economically thriving spaces. Yet North and West Philly both underperform economically and socially compared to its neighbors to the south. Passyunk has a median income of 94K, over 30k more than the city average. 
