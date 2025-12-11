@@ -12,13 +12,16 @@ Higher scores indicate better spatial access to essential services.
 
 ---
 
-# Data Sources
+## Data Sources
 
 - Health Services: OSMnx points of interest with tags:
+  
   ```python
   health = {'healthcare':['hospital','clinic','pharmacy','dentist', 'emergency', 'nursing_home']}
   ```
+
 - Social Services: OSMnx points of interest with tags:
+  
   ```python
   service = {'amenity':['post_office','library','police','social_facility','fire_station','childcare']}
   ```
@@ -28,11 +31,12 @@ Higher scores indicate better spatial access to essential services.
 
 ---
 
-# Methodology
+## Methodology
 
 1. **Extracting Healthcare & Amenity Locations**
 
    Using OSMnx, we queried and extracted point locations for health services and social amenities across Philadelphia.
+   
    ```python
    service = ox.features_from_polygon(
     gdf.unary_union,
@@ -51,7 +55,9 @@ Higher scores indicate better spatial access to essential services.
     A KDTree spatial index was built for efficient nearest-neighbor queries.
     For each neighborhood centroid, we computed the Euclidean distance to the nearest health service and social amenity.
 
-    FORMULA: di​=jmin​(∥xi​−yj​∥)
+   ````python
+    di​=jmin​(∥xi​−yj​∥)
+   ```` 
     Where:
     - xi = neighborhood centroid
     - yi = facility location
@@ -62,6 +68,7 @@ Higher scores indicate better spatial access to essential services.
 3. **Normalizing Distances to Scores**
 
    Distances were min-max normalized to a 0–1 scale, inverted so that shorter distances yield higher scores:
+   
    ```python
    normalized_score = 1 - (distance - min_distance) / (max_distance - min_distance)
    ```
@@ -88,9 +95,9 @@ Higher scores indicate better spatial access to essential services.
 
 ---
 
-# Interpretation 
+## Interpretation 
 
-## Visualizations
+### Visualizations
 
 1. **Neighborhood-Level Amenity Proximity Maps**  
    

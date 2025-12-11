@@ -9,20 +9,21 @@
 ---
 
 ## 2. Environmental Data
+
 - **NDVI (Vegetation Health)**  
-  - Source: Google Earth Engine (Landsat 8 SR)  
-  - Processing: seasonal filtering, NDVI formula, zonal statistics  
-  - Normalized output column: `ndvi_score`
+    - Source: Google Earth Engine (Landsat 8 SR)  
+    - Processing: seasonal filtering, NDVI formula, zonal statistics  
+    - Normalized output column: `ndvi_score`
 
 - **Tree Canopy (PPR 2015 Canopy Points)**  
-  - Source: Philadelphia Parks & Recreation  
-  - Processing: point density → normalized 0–1  
-  - Output column: `tree_score` 
+    - Source: Philadelphia Parks & Recreation  
+    - Processing: point density → normalized 0–1  
+    - Output column: `tree_score` 
 
 - **Park Proximity (OSM Parks)**  
-  - Source: OpenStreetMap (`leisure=park`, `garden`, `playground`)  
-  - Method: KDTree nearest-neighbor distance → inverted → score  
-  - Output column: `park_proximity_score` 
+    - Source: OpenStreetMap (`leisure=park`, `garden`, `playground`)  
+    - Method: KDTree nearest-neighbor distance → inverted → score  
+    - Output column: `park_proximity_score` 
 
 - **Final environmental score column:**
     - `environmental_score = (ndvi_score + tree_score + park_proximity_score) / 3`
@@ -30,47 +31,47 @@
 
 ## 3. Land Use & Amenity Data
 - **Healthcare locations (OSM)**  
-  - Tags: hospital, clinic, pharmacy, dentist, emergency, nursing_home  
-  - Method: KDTree nearest facility → score  
-  - Output column: `health_proximity_score`
+   - Tags: hospital, clinic, pharmacy, dentist, emergency, nursing_home  
+    - Method: KDTree nearest facility → score  
+    - Output column: `health_proximity_score`
 
 - **Civic & Social Services (OSM)**  
-  - Tags: social_facility, post_office, library, police, fire_station, childcare  
-  - Method: KDTree nearest service → score  
-  - Output column: `service_proximity_score`
+    - Tags: social_facility, post_office, library, police, fire_station, childcare  
+    - Method: KDTree nearest service → score  
+    - Output column: `service_proximity_score`
 
 - **Final land-use score column:**  
-  - `land_use_score = (health_proximity_score + service_proximity_score) / 2`  
+    - `land_use_score = (health_proximity_score + service_proximity_score) / 2`  
    
 
 ---
 
 ## 4. Mobility & Public Realm Data
 - **Sidewalk Network (OSM Footways)**  
-  - Tags: highway=footway, footway=sidewalk, crossing  
-  - Method: NetworkX components → gap density → normalized  
-  - Output column: `sidewalk_index`
+    - Tags: highway=footway, footway=sidewalk, crossing  
+    - Method: NetworkX components → gap density → normalized  
+    - Output column: `sidewalk_index`
 
 - **Cartways & Curbs (OpenDataPhilly)**  
-  - Files: Curbs.geojson + Curbs_No_Cartways.geojson  
-  - Method: cartway density → inverted → normalized  
-  - Output column: `cartway_density_index`
+    - Files: Curbs.geojson + Curbs_No_Cartways.geojson  
+    - Method: cartway density → inverted → normalized  
+    - Output column: `cartway_density_index`
 
 - **Bike Network (OpenDataPhilly)**  
-  - File: Bike_Network.geojson  
-  - Method: lane density normalized  
-  - Output column: `bike_index`
+    - File: Bike_Network.geojson  
+   - Method: lane density normalized  
+    - Output column: `bike_index`
 
 - **Final mobility score column:**  
-  - `mobility_score = (bike_index + sidewalk_index + cartway_density_index)/3` 
+    - `mobility_score = (bike_index + sidewalk_index + cartway_density_index)/3` 
 
 ---
 
 ## 5. Social Demographic Data (ACS 2022)
 - Variables used:  
-  - Disability rate (inverted)  
-  - Elderly 65+ rate (inverted)  
-  - Walk-to-work share  
+    - Disability rate (inverted)  
+    - Elderly 65+ rate (inverted)  
+    - Walk-to-work share  
 - Level: census tract, aggregated to neighborhoods  
 - Output column: `social_score`
 

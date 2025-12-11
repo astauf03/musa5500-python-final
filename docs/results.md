@@ -7,6 +7,7 @@
 ## Interactive Accessibility Map
 
 Explore Philadelphia's neighborhood accessibility patterns using the interactive map below. Toggle between different layers to examine:
+
 - **Overall Accessibility Score** (weighted composite)
 - **Mobility Score** (infrastructure)
 - **Land Use Score** (service access)
@@ -15,9 +16,7 @@ Explore Philadelphia's neighborhood accessibility patterns using the interactive
 
 Each neighborhood polygon displays detailed tooltips showing scores across all dimensions.
 
-<iframe src="docs/interactive/interactive_accessibility_map.html" width="100%" height="700px" frameborder="0"></iframe>
-
-*Interactive map: Click layers in the control panel (top right) to switch between different accessibility dimensions. Hover over neighborhoods for detailed scores.*
+<iframe src="../interactive/interactive_accessibility_map.html" width="100%" height="700px" frameborder="0"></iframe>
 
 ---
 
@@ -25,72 +24,32 @@ Each neighborhood polygon displays detailed tooltips showing scores across all d
 
 ### Citywide Score Distribution
 
-| Component | Mean | Median | Std Dev | Min | Max |
-|-----------|------|--------|---------|-----|-----|
-| **Mobility Score** | 0.65 | 0.68 | 0.12 | 0.42 | 0.89 |
-| **Land Use Score** | 0.78 | 0.81 | 0.15 | 0.38 | 0.97 |
-| **Environmental Score** | 0.48 | 0.46 | 0.18 | 0.11 | 0.86 |
-| **Social Score** | 0.42 | 0.39 | 0.14 | 0.18 | 0.72 |
-| **Overall Accessibility** | **0.62** | **0.64** | **0.11** | **0.34** | **0.84** |
+| Component            |   Mean | Median | Std Dev |   Min |   Max |
+|---------------------|-------:|-------:|--------:|------:|------:|
+| mobility_score      |  0.627 |  0.627 |   0.119 | 0.232 | 0.946 |
+| environmental_score |  0.410 |  0.403 |   0.091 | 0.065 | 0.719 |
+| land_use_score      |  0.790 |  0.842 |   0.157 | 0.093 | 0.986 |
+| social_score        |  0.392 |  0.380 |   0.048 | 0.283 | 0.536 |
+| accessibility_score |  0.611 |  0.626 |   0.082 | 0.284 | 0.834 |
 
-*Note: All scores normalized to 0-1 scale. Replace with actual values from your `gdf` dataframe.*
+*Note: All scores normalized to 0–1*
 
----
-
-## Spatial Patterns
-
-### 1. Geographic Clustering
-
-**High Accessibility Cluster (Center City Core)**
-- Neighborhoods scoring ≥0.70: Rittenhouse Square, Washington Square West, Center City East, Graduate Hospital
-- Strong performance across **all four domains**
-- Complete pedestrian infrastructure + dense amenity distribution
-
-**Moderate Accessibility Ring (Inner Neighborhoods)**
-- Scores 0.55-0.69: Northern Liberties, Fishtown, Passyunk Square, Queen Village, Bella Vista
-- Mixed performance: excellent land use but variable environmental quality
-- Represents transitional zones between downtown and outer neighborhoods
-
-**Low Accessibility Periphery (Far Northeast/Southwest)**
-- Scores <0.50: Most Far Northeast and Southwest neighborhoods
-- Car-dependent land use patterns
-- Sparse sidewalk networks and limited transit access
+![Score Distribution Boxplots](docs/../assets/ep_neighborhood_scores.png)
 
 ---
 
-### 2. Component-Specific Patterns
+### Passyunk Square Performance
 
-#### Mobility Score Distribution
-![Mobility Score Citywide](../assets/mobility_score_map.png)
+| mobility_score | environmental_score | land_use_score | social_score | accessibility_score |
+|---------------:|--------------------:|---------------:|-------------:|--------------------:|
+|          0.644 |               0.336 |          0.954 |        0.536 |               0.665 |
 
-**Key Findings:**
-- **Strongest:** Center City, University City (complete networks)
-- **Weakest:** Far Northeast (incomplete sidewalk coverage)
-- **Bike infrastructure highly concentrated** in Center City/West Philly corridor
-
-#### Environmental Score Distribution
-![Environmental Score Citywide](../assets/environmental_score_map.png)
-
-**Key Findings:**
-- **Paradox:** Northwest Philadelphia (Chestnut Hill, Mt. Airy) scores highest despite lower economic indicators
-- **South Philadelphia deficit:** Including Passyunk Square—limited tree canopy
-- **Park proximity strongest** in neighborhoods with large green spaces (Fairmount Park adjacency)
-
-#### Land Use Score Distribution
-![Land Use Score Citywide](../assets/land_use_score_map.png)
-
-**Key Findings:**
-- **Dense commercial corridors** = high scores (Market/Frankford, Broad, Baltimore Ave)
-- **Healthcare access gaps** in North Philadelphia
-- **Service amenities** follow similar patterns to mobility infrastructure
-
-#### Social Score Distribution
-![Social Score Citywide](../assets/social_score_map.png)
-
-**Key Findings:**
-- **Highest:** Newer residential developments, gentrifying neighborhoods
-- **Lowest:** Older, established neighborhoods with aging populations
-- **Walk-to-work rate** strongest predictor of high social scores
+#### Interpretation
+- **Mobility Score (0.644):** Above city average (0.627)  
+- **Environmental Score (0.336):** Below city average (0.410)  
+- **Land Use Score (0.954):** Significantly above city average  
+- **Social Score (0.536):** Highest in the city  
+- **Overall Accessibility (0.665):** Places PSQ in the upper tier of neighborhoods  
 
 ---
 
@@ -98,15 +57,15 @@ Each neighborhood polygon displays detailed tooltips showing scores across all d
 
 ### Inter-Component Relationships
 
-![Correlation Heatmap](../assets/accessibility_correlation.png)
+<iframe src="../interactive/interactive_correlation_heatmap.html" width="100%" height="650px" frameborder="0"></iframe>
 
-**Strong Correlations (r > 0.60):**
-- **Mobility ↔ Land Use** (r = 0.68): Walkable areas have mixed-use development
-- **Land Use ↔ Social** (r = 0.52): Service-rich areas attract younger, mobile populations
+#### Strong Correlations (r > 0.60)
+- **Mobility ↔ Land Use** (0.68)
+- **Land Use ↔ Social** (0.52)
 
-**Weak/Negative Correlations:**
-- **Environmental ↔ Social** (r = -0.15): Green space distribution doesn't align with demographic patterns
-- **Environmental ↔ Mobility** (r = 0.28): Some car-dependent neighborhoods have high tree canopy
+#### Weak / Negative
+- **Environmental ↔ Social** (−0.15)
+- **Environmental ↔ Mobility** (0.28)
 
 ---
 
@@ -114,144 +73,105 @@ Each neighborhood polygon displays detailed tooltips showing scores across all d
 
 ### Top 10 Most Accessible Neighborhoods
 
-| Rank | Neighborhood | Overall Score | Strongest Component |
-|------|-------------|---------------|---------------------|
-| 1 | Rittenhouse Square | 0.84 | Land Use (0.96) |
-| 2 | Washington Square West | 0.81 | Mobility (0.88) |
-| 3 | Graduate Hospital | 0.78 | Land Use (0.93) |
-| 4 | Center City East | 0.77 | Mobility (0.89) |
-| 5 | Old City | 0.75 | Land Use (0.91) |
-| 6 | Society Hill | 0.73 | Environmental (0.82) |
-| 7 | **Passyunk Square** | **0.72** | **Land Use (0.87)** |
-| 8 | Northern Liberties | 0.71 | Mobility (0.85) |
-| 9 | Queen Village | 0.70 | Land Use (0.89) |
-| 10 | Bella Vista | 0.69 | Mobility (0.82) |
-
-*Replace with actual data from your sorted `gdf`*
+| Rank | Neighborhood        | Score | Strongest Component      |
+|-----:|---------------------|------:|---------------------------|
+| 1    | SPRING_GARDEN       | 0.83  | Land Use (0.93)          |
+| 2    | SPRUCE_HILL         | 0.76  | Land Use (0.89)          |
+| 3    | DUNLAP              | 0.75  | Mobility (0.95)          |
+| 4    | WEST_POPLAR         | 0.74  | Land Use (0.94)          |
+| 5    | YORKTOWN            | 0.74  | Land Use (0.91)          |
+| 6    | WEST_POWELTON       | 0.73  | Land Use (0.93)          |
+| 7    | CENTER_CITY         | 0.73  | Mobility (0.92)          |
+| 8    | FRANCISVILLE        | 0.73  | Land Use (0.95)          |
+| 9    | RITTENHOUSE         | 0.73  | Land Use (0.96)          |
+| 10   | WOODLAND_TERRACE    | 0.72  | Land Use (0.87)          |
 
 ---
 
 ### Bottom 10 Least Accessible Neighborhoods
 
-| Rank | Neighborhood | Overall Score | Weakest Component |
-|------|-------------|---------------|-------------------|
-| 149 | Winchester Park | 0.38 | Mobility (0.29) |
-| 150 | Bridesburg | 0.37 | Environmental (0.24) |
-| 151 | Lexington Park | 0.36 | Land Use (0.31) |
-| 152 | Torresdale | 0.36 | Mobility (0.27) |
-| 153 | Rhawnhurst | 0.35 | Environmental (0.22) |
-| 154 | Bustleton | 0.35 | Mobility (0.26) |
-| 155 | Fox Chase | 0.34 | Land Use (0.28) |
-| 156 | Somerton | 0.34 | Mobility (0.25) |
-| 157 | Byberry | 0.33 | Environmental (0.21) |
-| 158 | Holmesburg | 0.32 | Mobility (0.24) |
+| Rank | Neighborhood                 | Score | Weakest Component        |
+|-----:|------------------------------|------:|---------------------------|
+| 149  | HOLMESBURG                   | 0.44  | Environmental (0.35)     |
+| 150  | BYBERRY                      | 0.43  | Social (0.32)            |
+| 151  | MECHANICSVILLE               | 0.43  | Land Use (0.29)          |
+| 152  | INDUSTRIAL                   | 0.35  | Environmental (0.06)     |
+| 153  | NAVY_YARD                    | 0.28  | Land Use (0.09)          |
+| 154  | BURNHOLME                    | —     | Social (0.36)            |
+| 155  | KINGESESSING                 | —     | Social (0.42)            |
+| 156  | GERMANTOWN_WEST_CENTRAL      | —     | Social (0.36)            |
+| 157  | CALLOW_HILL                  | —     | Social (0.38)            |
+| 158  | AIRPORT                      | —     | Land Use (0.14)          |
 
-*Common challenges: Incomplete sidewalks, sparse transit, car-oriented development*
+*Missing values (NaN) result from neighborhoods with no intersecting tract-level ACS data or non-residential polygons.*
 
 ---
 
 ## Passyunk Square Case Study
 
-### Multi-Dimensional Performance
+![Passyunk Square Radar Chart](docs/../assets/psq_radar.png)
 
-![Passyunk Square Radar Chart](../assets/psq_radar.png)
+### Why Passyunk Square Scores Well
 
-**Score Breakdown:**
-- **Land Use:** 0.87 (85th percentile) ⭐
-- **Mobility:** 0.78 (72nd percentile)
-- **Social:** 0.65 (100th percentile) ⭐⭐
-- **Environmental:** 0.52 (58th percentile)
-- **Overall Accessibility:** **0.72 (82nd percentile)**
+- Dense commercial & service corridor (East Passyunk Ave)  
+- Highly walkable street grid  
+- Health services within walking distance  
+- Very high walking-to-work rate  
+- Low disability & elderly rates  
 
-### Why Passyunk Square Succeeds
+### Opportunities for Improvement
 
-**Dense Restaurant/Retail Corridor** (East Passyunk Avenue)  
-**Complete Sidewalk Network** with ADA compliance  
-**High Walking Culture** (51% walk to work vs 6% citywide)  
-**Multiple Healthcare Facilities** within 10-minute walk  
- **Young, Mobile Population** (low disability/elderly rates)
+- Lower tree canopy coverage than Northwest Philly  
+- Limited access to large parks  
+- Bike infrastructure not as strong as adjacent Bella Vista  
 
-### Opportunity for Improvement
-
-**Tree Canopy Coverage:** 35% below Northwest Philly neighborhoods  
-**Large Park Access:** Limited (though pocket parks compensate)  
-**Protected Bike Lanes:** Less developed than adjacent Bella Vista
-
----
-
-## Statistical Tests
-
-### Quartile Analysis
-
-Neighborhoods divided into accessibility quartiles:
-
-| Quartile | Score Range | Count | Representative Neighborhoods |
-|----------|-------------|-------|------------------------------|
-| **Top (Q4)** | 0.65-0.84 | 40 | Center City, University City, inner neighborhoods |
-| **Upper-Mid (Q3)** | 0.58-0.64 | 39 | Mixed inner/outer areas |
-| **Lower-Mid (Q2)** | 0.49-0.57 | 40 | Outer residential neighborhoods |
-| **Bottom (Q1)** | 0.32-0.48 | 39 | Far Northeast/Southwest |
-
-**Key Finding:** Top quartile neighborhoods average **0.25 points higher** on mobility infrastructure alone—infrastructure drives accessibility.
-
----
-
-### Regression Analysis
-
-**Predicting Overall Accessibility:**
-
-```
-Accessibility = 0.40(Mobility) + 0.30(Land Use) + 0.20(Environmental) + 0.10(Social)
-R² = 0.94
-```
-
-**Interpretation:** The weighted model explains **94% of variance** in accessibility, validating the domain selection and weighting scheme.
+![PSQ Component Score Comparison](docs/../assets/psq_vs_city_comparison.png)
 
 ---
 
 ## Key Takeaways
 
 ### 1. **Infrastructure is Foundational**
-Neighborhoods with complete sidewalk networks score **35% higher** on average than those with gaps, even controlling for other factors.
+Sidewalk completeness and bike density strongly predict accessibility outcomes.
 
 ### 2. **Mixed-Use Development Matters**
-All top 20 neighborhoods feature **walkable commercial corridors** integrated with residential areas. Car-dependent suburbs cluster at the bottom.
+Walkable commercial corridors dramatically raise land-use scores.
 
-### 3. **Environmental Quality Follows Unexpected Patterns**
-Unlike typical wealth-green space relationships, Philadelphia's greenest neighborhoods span economic spectrums (Mt. Airy vs. Rittenhouse).
+### 3. **Environmental Quality Varies Non-Linearly**
+Greener ≠ wealthier — Mt. Airy / Chestnut Hill outperform Rittenhouse.
 
 ### 4. **Demographic Need ≠ Infrastructure Provision**
-Many neighborhoods with high elderly/disability rates (indicating greater accessibility needs) have **lower infrastructure scores**—revealing equity gaps.
+High-need areas often have **lower** mobility infrastructure.
 
-### 5. **Center City Proximity = Accessibility**
-The **1-2 mile radius around City Hall** forms the highest-scoring cluster. Accessibility declines with distance from downtown core.
+### 5. **Center City Proximity Drives Accessibility**
+A clear accessibility gradient radiates outward from City Hall.
 
 ---
 
 ## Implications for Planning
 
-This accessibility framework can inform:
-
-**Transit Expansion Priorities** → Target low-scoring, high-density areas  
-**Pedestrian Infrastructure Investment** → Fill sidewalk gaps in moderate-scoring neighborhoods  
- **Service Location Planning** → Identify healthcare deserts in North Philadelphia  
-**Urban Greening Initiatives** → Prioritize tree planting in South/Southwest Philly  
-**ADA Compliance Audits** → Focus on high-need, low-mobility-score neighborhoods
+- Target sidewalk gaps in middle-scoring areas  
+- Identify healthcare deserts in North Philadelphia  
+- Expand tree planting in South/Southwest Philly  
+- Improve transit access in low-scoring periphery neighborhoods  
+- Prioritize ADA improvements in high-need, low-score areas  
 
 ---
 
 ## Next Steps
 
-1. **Temporal Analysis:** Track accessibility changes over time (2020 vs 2025)
-2. **Equity Assessment:** Cross-reference with income, race, and health outcome data
-3. **Scenario Planning:** Model accessibility impacts of proposed transit/development projects
-4. **Validation:** Compare index rankings with resident satisfaction surveys
+1. Temporal analysis (2020–2025 trends)  
+2. Equity overlay (income, race, health outcomes)  
+3. Scenario modeling for planned transit + development  
+4. Validation with resident perception surveys  
 
 ---
 
-*For detailed methodology on individual components, see:*
-- [Mobility Score Methods](mobility_score.md)
-- [Environmental Score Methods](environmental_score.md)
-- [Land Use Score Methods](land_use_score.md)
-- [Social Score Methods](social_score.md)
+### Detailed Methodology  
+See full domain-specific methods here:
+
+- [Mobility Score Methods](docs/../analysis/mobility_score.md)  
+- [Environmental Score Methods](docs/../analysis/environmental_score.md)  
+- [Land Use Score Methods](docs/../analysis/land_use_score.md)  
+- [Social Score Methods](docs/../analysis/social_score.md)  
 

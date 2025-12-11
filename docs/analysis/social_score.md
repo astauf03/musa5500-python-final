@@ -7,7 +7,7 @@ The score is calculated at the **census tract level** and then aggregated to **n
 
 ---
 
-# Overview
+## Overview
 
 The Social Score reflects three core demographic components:
 
@@ -29,7 +29,7 @@ High values indicate tracts with **lower demographic vulnerability** and **great
 
 ---
 
-# Data Sources
+## Data Sources
 
 All indicators originate from the **2021 ACS 5-year tables**:
 
@@ -52,9 +52,9 @@ Full code for renaming and cleaning variables is in the project notebook.
 
 ---
 
-# Methodology
+## Methodology
 
-## 1. Preparing ACS Variables
+### 1. Preparing ACS Variables
 
 All ACS raw counts are converted to numeric and cleaned.  
 Key totals include:
@@ -67,9 +67,9 @@ Key totals include:
 
 ---
 
-## 2. Component Calculations
+### 2. Component Calculations
 
-### **a. Disability Rate**
+#### **a. Disability Rate**
 \[
 \text{disability\_rate} = \frac{\text{population\_with\_disability}}{\text{total\_population}}
 \]
@@ -82,7 +82,7 @@ Because higher disability prevalence indicates higher vulnerability, we invert t
 
 ---
 
-### **b. Elderly Rate (65+)**
+#### **b. Elderly Rate (65+)**
 \[
 \text{age\_65\_plus\_rate} = \frac{\text{total\_age\_65\_plus}}{\text{total\_population}}
 \]
@@ -97,7 +97,7 @@ This inversion does *not* imply older residents are undesirable; rather, older r
 
 ---
 
-### **c. Walking-to-Work Rate**
+#### **c. Walking-to-Work Rate**
 \[
 \text{commute\_walk\_rate} =
 \frac{\text{commute\_walk}}{\text{total\_workers}}
@@ -158,21 +158,23 @@ Passyunk Square's aggregated Social Score can then be compared to other neighbor
 
 --- 
 
-# Interpretation
+## Interpretation
 
 High Social Scores reflect neighborhoods with demographics that typically experience fewer mobility barriers, such as lower disability prevalence, fewer elderly residents, and higher rates of walking to work. Conversely, low Social Scores highlight areas where residents may face greater challenges related to mobility independence, indicating potential needs for improved infrastructure and services.
 
-## 1. Citywide Patterns
+### 1. Citywide Patterns
 
 These maps show the spatial distribution of the three components used to build the Social Score across Philadelphia neighborhoods.
 
 Passyunk Square is highlighted for reference.
 ![Social Score Components](../assets/social_components.png)
 
-**TEXT PLACEHOLDER FOR INTERPRETATION**
+***Elderly Score (Inverse 65+ Rate)***: Higher scores (greener areas) indicate lower proportions of elderly residents, suggesting potentially lower mobility vulnerability related to age.
+*** Disability Score (Inverse Disability Rate)***: Higher scores (greener areas) indicate lower disability prevalence, suggesting potentially lower mobility vulnerability related to disability.
+*** Walker-Commuter Score***: Higher scores (greener areas) indicate higher rates of walking to work, suggesting stronger pedestrian infrastructure and local-access travel behaviors.
 
 ---
-## 2. Social Score Distribution
+### 2. Social Score Distribution
 
 These histograms display the distribution of Social Scores across all Philadelphia neighborhoods, with Passyunk Square highlighted.
 
@@ -185,9 +187,10 @@ KEY FINDINGS
 • Social Score: 0.534 (City Avg: 0.391)
 • Percentile: 100.0th
 ================================================================================
+
 ---
 
-## 3. Compare to City Average
+### 3. Compare to City Average
 
 Passyunk Square's Social Score of 0.534 is significantly higher than the city average of 0.391, placing it in the 100th percentile among Philadelphia neighborhoods. This indicates that Passyunk Square has a demographic profile associated with lower mobility vulnerability compared to other areas in the city.
 

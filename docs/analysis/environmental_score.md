@@ -56,6 +56,9 @@ Distances from tract centroids to nearest park are computed using a KD-Tree.
 
 ### **3. Urban Tree Canopy**
 
+Tree canopy coverage is estimated using PPR’s 2015 tree canopy points.  
+Tree density is calculated per tract as:
+
 <div class="eq-red">
 
 \[
@@ -63,48 +66,56 @@ Distances from tract centroids to nearest park are computed using a KD-Tree.
 \frac{\text{TreeArea}}{\text{TractArea}}
 \]
 
+</div>
 
+and normalized as:
+
+<div class="eq-red">
 
 \[
 \text{TreeScore} =
-\frac{\text{TreeDensity}_{\text{tract}} - \text{Density}_{\min}}
-     {\text{Density}_{\max} - \text{Density}_{\min}}
+\frac{
+\text{TreeDensity}_{\text{tract}} - \text{Density}_{\min}
+}{
+\text{Density}_{\max} - \text{Density}_{\min}
+}
 \]
 
 </div>
 
 ---
 
-## Composite Environmental Score
+## **Composite Environmental Score**
 
-An equal-weighted average:
+The final environmental domain score is the equal-weighted average of NDVI, park proximity, and tree canopy:
 
 <div class="eq-blue">
 
 \[
 \text{EnvironmentalScore} =
 \frac{
-\text{NDVIScore} +
-\text{ProximityScore} +
+\text{NDVIScore}
++
+\text{ProximityScore}
++
 \text{TreeScore}
 }{3}
 \]
 
 </div>
 
-Neighborhood scores are computed by averaging tract scores within each boundary.
+Neighborhood values are computed by averaging tract-level environmental scores within each neighborhood boundary.
 
 ---
 
-## Visualizations
+## **Visualizations**
 
-### **Tract-Level Environmental Components**
-*(insert: `environmental_components.png`)*
+### **Neighborhood Environmental Score Map**
 
-### **Neighborhood-Level Environmental Score Map**
-*(insert: `environmental_score_map.png`)*
+![Environmental Score Map](../assets/green_space.png)
 
----
+**NDVI:** Passyunk Square ranks low on the citywide NDVI distribution, indicating limited vegetation health relative to other neighborhoods.  
+**Proximity to Parks:** The neighborhood has moderate access to parks, with several reachable on foot but fewer large green spaces nearby.  
+**Tree Canopy:** Tree coverage is sparse in Passyunk Square, lowering its overall environmental domain score.
 
-## Interpretation
-*(Insert narrative about Passyunk Square + citywide observations)*  
+
