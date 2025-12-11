@@ -95,3 +95,36 @@ a,
   color: #40C5E3;
   border: 1px solid #40C5E3;
 }
+
+
+/*************************************************************
+ MATHJAX COLOR FIX
+ Ensures .eq-blue, .eq-red, .eq-gold work INSIDE MathJax output
+**************************************************************/
+
+/* Allow wrapper div to control MathJax internal text */
+.eq-blue mjx-container,
+.eq-blue mjx-container * {
+  color: #40C5E3 !important;
+  fill: #40C5E3 !important;
+}
+
+.eq-red mjx-container,
+.eq-red mjx-container * {
+  color: #E37440 !important;
+  fill: #E37440 !important;
+}
+
+.eq-gold mjx-container,
+.eq-gold mjx-container * {
+  color: #FCC974 !important;
+  fill: #FCC974 !important;
+}
+
+/* Optional: center equations in wrappers */
+.eq-blue,
+.eq-red,
+.eq-gold {
+  text-align: center;
+  margin: 1rem 0;
+}

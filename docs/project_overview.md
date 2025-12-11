@@ -32,3 +32,4 @@ flowchart TD
     D --> E[Construct Composite Accessibility Index]
     E --> F[Visualization: Maps and Charts]
     F --> G[Interpretation and Evaluation]
+```
