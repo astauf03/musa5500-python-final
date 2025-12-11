@@ -11,6 +11,12 @@ Passyunk Square serves as the primary case study because:
 - It has well-developed pedestrian and bicycle infrastructure.  
 - It provides a clear contrast to neighborhoods experiencing lower levels of accessibility.  
 
+### Note on Data Aggregation
+
+Due to late-stage data issues, several components of the accessibility index were computated at the census tract and not aggregated to the neighborhood level.
+
+This will affect the final neighborhood-level accessibility scores, but the tract-level analysis still provides valuable insights into spatial patterns of accessibility across Philadelphia.
+
 ---
 
 ## Research Questions

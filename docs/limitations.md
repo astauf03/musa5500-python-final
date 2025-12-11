@@ -34,6 +34,7 @@ Despite our best efforts to create a multifaceted view of neighborhood accessibi
      - Aggregating tract-level data to neighborhoods may obscure intra-neighborhood variability.
      - Some neighborhoods contain diverse tracts with varying accessibility profiles that are averaged out.
      - Walkshed or service areas might be more appropriate for certain analyses.
+     - Mixed geographic untis (tracts vs. neighborhoods) complicate interpretation.
 
 
 ---

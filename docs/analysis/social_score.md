@@ -162,40 +162,16 @@ Passyunk Square's aggregated Social Score can then be compared to other neighbor
 
 High Social Scores reflect neighborhoods with demographics that typically experience fewer mobility barriers, such as lower disability prevalence, fewer elderly residents, and higher rates of walking to work. Conversely, low Social Scores highlight areas where residents may face greater challenges related to mobility independence, indicating potential needs for improved infrastructure and services.
 
-### 1. Citywide Patterns
+### Citywide Patterns
 
 These maps show the spatial distribution of the three components used to build the Social Score across Philadelphia neighborhoods.
 
 Passyunk Square is highlighted for reference.
-![Social Score Components](../assets/social_components.png)
+![Social Score Components](../assets/socmaps.jpg)
 
-***Elderly Score (Inverse 65+ Rate)***: Higher scores (greener areas) indicate lower proportions of elderly residents, suggesting potentially lower mobility vulnerability related to age.
-*** Disability Score (Inverse Disability Rate)***: Higher scores (greener areas) indicate lower disability prevalence, suggesting potentially lower mobility vulnerability related to disability.
-*** Walker-Commuter Score***: Higher scores (greener areas) indicate higher rates of walking to work, suggesting stronger pedestrian infrastructure and local-access travel behaviors.
-
----
-### 2. Social Score Distribution
-
-These histograms display the distribution of Social Scores across all Philadelphia neighborhoods, with Passyunk Square highlighted.
-
-![Social Score Distribution](../assets/psq_city_histograms.png)
-
-================================================================================
-KEY FINDINGS
-================================================================================
-• Passyunk Square ranks 158 out of 158 neighborhoods
-• Social Score: 0.534 (City Avg: 0.391)
-• Percentile: 100.0th
-================================================================================
-
----
-
-### 3. Compare to City Average
-
-Passyunk Square's Social Score of 0.534 is significantly higher than the city average of 0.391, placing it in the 100th percentile among Philadelphia neighborhoods. This indicates that Passyunk Square has a demographic profile associated with lower mobility vulnerability compared to other areas in the city.
+***Elderly Score (Inverse 65+ Rate)***: Higher scores (red areas) indicate lower proportions of elderly residents, suggesting potentially lower mobility vulnerability related to age.
+*** Disability Score (Inverse Disability Rate)***: Higher scores (red areas) indicate lower disability prevalence, suggesting potentially lower mobility vulnerability related to disability.
+*** Walker-Commuter Score***: Higher scores (red areas) indicate higher rates of walking to work, suggesting stronger pedestrian infrastructure and local-access travel behaviors.
 
 
-!![PSQ vs City Average Social Score](../assets/psq_social_rank.png)
-
----
 
