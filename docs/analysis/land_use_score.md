@@ -114,4 +114,4 @@ Higher scores indicate better spatial access to essential services.
 
 ## Key Findings
 
-filler 
+Passyunk is generally young and able-bodied. This follows the patterns of the rest of the city. However, Passyunk has an above average rate of people who walk to work, making their social score incredibly robust. 
